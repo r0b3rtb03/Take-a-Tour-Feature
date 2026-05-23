@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SiteTour Demo</title>
+  <link rel="stylesheet" href="tour.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+      background: #1c1916;
+      color: #bdbebe;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 56px;
+      background: #1c1916;
+      border-bottom: 1px solid #2a2620;
+    }
+    .brand { font-size: 15px; font-weight: 800; color: #f5f5f5; }
+    .topbar-action {
+      padding: 7px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      background: #3a8bff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .main { max-width: 960px; margin: 0 auto; padding: 32px 24px; }
+    h1 { font-size: 28px; color: #f5f5f5; margin-bottom: 24px; }
+    .card {
+      background: #26231e;
+      border: 1px solid #45403a;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .card-title { color: #f5f5f5; font-weight: 600; margin-bottom: 6px; }
+    .pill {
+      display: inline-block;
+      padding: 4px 10px;
+      background: #3a8bff22;
+      color: #3a8bff;
+      border-radius: 999px;
+      font-size: 12px;
+      margin-right: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">SiteTour Demo</div>
+    <button id="startTourBtn" class="topbar-action">Take Tour</button>
+  </div>
+  <div class="main">
+    <h1 id="pageTitle">Welcome</h1>
+    <div class="card" id="introCard">
+      <div class="card-title">Intro card</div>
+      <div>The tour will dim the page and walk you through these elements.</div>
+    </div>
+    <div class="card" id="featureCard">
+      <div class="card-title">Feature card</div>
+      <div>
+        <span class="pill" id="pillA">Pill A</span>
+        <span class="pill" id="pillB">Pill B</span>
+      </div>
+    </div>
+    <div class="card" id="finalCard">
+      <div class="card-title">Final card</div>
+      <div>End of tour — press Esc, click outside, or hit Finish.</div>
+    </div>
+  </div>
+
+  <script src="tour.js"></script>
+  <script>
+    const tour = new SiteTour({
+      steps: [
+        { selector: ".brand", title: "Welcome", body: "This is a <strong>standalone</strong> tour engine — drop in <code>tour.css</code> + <code>tour.js</code> and pass it a steps array." },
+        { selector: "#pageTitle", title: "Page title", body: "Each step has a <strong>selector</strong>, <strong>title</strong>, and <strong>body</strong> (HTML allowed)." },
+        { selector: "#introCard", title: "Cards", body: "The cutout follows any element you point at." },
+        { selector: "#pillA", title: "Small targets work too", body: "Padding, arrow placement, and popover side are picked automatically." },
+        { selector: "#pillB", title: "Use arrow keys", body: "← / → step through. <strong>Esc</strong> dismisses." },
+        { selector: "#finalCard", title: "All done", body: "Use the <strong>onBeforeStep</strong> hook to do things like switch tabs before highlighting an element." },
+        { selector: "#startTourBtn", title: "Re-run any time", body: "Click <strong>Take Tour</strong> to start over." },
+      ],
+    });
+    document.getElementById("startTourBtn").addEventListener("click", () => tour.start());
+  </script>
+</body>
+</html>
