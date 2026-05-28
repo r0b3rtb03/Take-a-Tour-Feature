@@ -24,6 +24,24 @@ the page with an SVG cutout around a target element and shows a popover with
 
 See [`index.html`](index.html) for a runnable demo.
 
+## Screenshots
+
+![Step 1 — Welcome card introducing SiteTour, with Skip Tour / Back / Next controls](docs/img/step-1-welcome.png)
+
+*Opening step: a centered intro card explaining what the engine is and how to drop it in.*
+
+![Step 4 — Popover anchored to a small "Pill A" button, arrow pointing up](docs/img/step-4-small-target.png)
+
+*Small targets work too — padding, arrow placement, and popover side are picked automatically.*
+
+![Step 6 — Popover below a highlighted "Final card" element, demonstrating onBeforeStep](docs/img/step-6-all-done.png)
+
+*Anchoring under a wide element: the popover sits below the cutout with the arrow pointing up at the highlighted card.*
+
+![Step 7 — Final step pointing at the Take Tour button so the user knows how to replay](docs/img/step-7-rerun.png)
+
+*Last step uses Finish instead of Next and points back at the trigger so users know how to re-run the tour.*
+
 ## API
 
 ### `new SiteTour(options)`
